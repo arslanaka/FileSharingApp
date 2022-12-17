@@ -86,57 +86,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void generateNoteOnSD(Context context, String sFileName, String sBody) {
-        try {
-            File root = new File(Environment.getExternalStorageDirectory(), "Notes");
-            if (!root.exists()) {
-                root.mkdirs();
-            }
-            File gpxfile = new File(root, sFileName);
-            FileWriter writer = new FileWriter(gpxfile);
-            writer.append(sBody);
-            writer.flush();
-            writer.close();
-            Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.d(TAG, "generateNoteOnSD: Exception :: "+e.getLocalizedMessage());
-        }
-    }
-
-
-    public void writeData (){
-        String fileName = "arslan.txt";
-
-
-        try
-        {
-            File root = new File(Environment.getExternalStorageDirectory()+File.separator+"Downloads");
-            Log.d(TAG, "writeData: root "+root.getAbsolutePath());
-            if (!root.exists())
-            {
-                root.mkdirs();
-                Log.d(TAG, "writeData: creating folder");
-            }
-            File gpxfile = new File(root, fileName);
-
-
-            FileWriter writer = new FileWriter(gpxfile,true);
-            writer.append(s+"\n\n");
-            writer.flush();
-            writer.close();
-            Log.d(TAG, "writeData: doneee");
-            Toast.makeText(this, "Data has been written to Report File", Toast.LENGTH_SHORT).show();
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-            Log.d(TAG, "writeData: exception :: "+e.getLocalizedMessage() );
-
-        }
-    }
-
-
     public void test(){
         File externalFile = new File(getExternalFilesDir(filePath),fileName);
         FileOutputStream fos = null;
